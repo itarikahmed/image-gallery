@@ -1,27 +1,50 @@
+"use client";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import useFetch from "@components/useFetch";
 
 const page = ({ params }) => {
+  const id = params.id;
+  const { data, isLoading, isError } = useFetch(
+    `https://api.unsplash.com/photos/${id}?&client_id=Fohj_i1nd-6ySubudqwNBDqY7SgcIH_a_5UCnNJ1Xp8`
+  );
+  if (isLoading) {
+    return <div className="text-center justify-center">Loading...</div>;
+  }
+  if (isError) {
+    return <p>Error: {isError.message}</p>;
+  }
+
+  const { urls, user } = data;
   return (
-    <div className=" flex justify-center items-center mt-28 h-auto">
-      <div className="flex w-1/2 h-96 border-2 border-gray-200 rounded-lg space-x-10 p-10 shadow-xl">
-        <div>
-          <Image src="" alt="" className=" w-52 h-72" />
+    <div>
+      <div className="flex items-center justify-evenly my-10">
+        <div className="w-2/3">
+          {/* <div className=" relative h-[50px] w-[50px] ">
+            <Image
+              src={urer?.profile_image?.medium}
+              alt=""
+              fill={true}
+              className=" object-cover p-4 mx-auto"
+            />
+          </div> */}
+          <h1 className="font-bold text-2xl"> Author Name: {user?.name}</h1>
+          <p className="max-w-2xl my-5 text-lg">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            necessitatibus, in adipisci blanditiis harum quasi. Labore eos
+            molestias eaque ipsam vitae. Iure rerum earum sequi, magnam corporis
+            asperiores adipisci praesentium suscipit cumque animi accusantium
+            inventore necessitatibus nam eligendi quibusdam modi dolore aliquam
+            repudiandae! Illo, ratione sit. Libero similique aut delectus.
+          </p>
         </div>
-        <div className="text-black space-y-2">
-          <h1>{params.id}</h1>
-          <p className="font-bold text-xl m-1"> Title:</p>
-          <p className="font-semibold text-xl m-1">IMDB rating: / 10</p>
-          <p className="font-semibold text-xl m-1">Country:</p>
-          <div className="pt-6">
-            <Link
-              href="/"
-              className=" px-4 py-2 border-2 rounded bg-blue-500 text-white font-semibold"
-            >
-              Go Back
-            </Link>
-          </div>
+        <div className=" relative h-[400px] w-[400px]  border-2">
+          <Image
+            alt=""
+            src={urls?.regular}
+            fill={true}
+            className="object-cover"
+          />
         </div>
       </div>
     </div>
