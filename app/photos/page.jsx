@@ -28,7 +28,7 @@ const Photos = () => {
   };
   return (
     <div className="mt-10">
-      <div className="grid justify-items-center grid-cols-3 gap-5">
+      <div className="justify-items-center grid grid-cols-1 sm:grid-cols-2 sm:gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-5">
         {data.slice(0, 10).map((data) => {
           const { urls, id } = data;
           return (

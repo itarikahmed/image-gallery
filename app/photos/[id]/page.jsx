@@ -18,7 +18,7 @@ const page = ({ params }) => {
   const { urls, user } = data;
   return (
     <div>
-      <div className="flex items-center justify-evenly my-10">
+      <div className="flex items-center justify-evenly my-10 flex-col md:flex-row">
         <div className="w-2/3">
           {/* <div className=" relative h-[50px] w-[50px] ">
             <Image
