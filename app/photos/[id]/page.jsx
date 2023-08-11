@@ -20,14 +20,6 @@ const page = ({ params }) => {
     <div>
       <div className="flex items-center justify-evenly my-10 flex-col md:flex-row">
         <div className="w-2/3">
-          {/* <div className=" relative h-[50px] w-[50px] ">
-            <Image
-              src={urer?.profile_image?.medium}
-              alt=""
-              fill={true}
-              className=" object-cover p-4 mx-auto"
-            />
-          </div> */}
           <h1 className="font-bold text-2xl"> Author Name: {user?.name}</h1>
           <p className="max-w-2xl my-5 text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
